@@ -8,18 +8,16 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<UserDTO> getAllUsers() {
+    public List<User> getAllUsers() {
         List<User> users = userRepository.findAll();
-        return users.stream()
-                .map(UserDTO::toModel)
-                .collect(Collectors.toList());
+        return users;
     }
 
     public UserDTO getUserById(Long id) {

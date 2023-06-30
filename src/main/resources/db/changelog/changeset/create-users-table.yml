@@ -34,22 +34,22 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: videoCard
+                  name: video_card
                   type: varchar(255)
                   constraints:
                     nullable: false
               - column:
-                  name: numbersOfVideoCard
-                  type: varchar(255)
+                  name: numbers_of_video_card
+                  type: int
                   constraints:
                     nullable: false
               - column:
-                  name: hashRate
+                  name: hash_rate
                   type: float
                   constraints:
                     nullable: false
               - column:
-                  name: electricityCost
+                  name: electricity_cost
                   type: float
                   constraints:
                     nullable: false
