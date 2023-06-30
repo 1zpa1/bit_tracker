@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-user
+      author: Pavel
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tg
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: videoCard
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: numbersOfVideoCard
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: hashRate
+                  type: float
+                  constraints:
+                    nullable: false
+              - column:
+                  name: electricityCost
+                  type: float
+                  constraints:
+                    nullable: false
