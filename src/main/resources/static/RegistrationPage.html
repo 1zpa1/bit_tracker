@@ -1,37 +1,69 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <title>Регистрация</title>
+    <title>Registration</title>
 </head>
 <body>
-<h1>Регистрация</h1>
-<form action="/createUser" method="post">
+<h1>Registration</h1>
+<form id="registrationForm" onsubmit="event.preventDefault(); sendFormData();">
     <!-- Форма регистрации -->
-    <label for="name">Имя:</label>
+    <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br>
 
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required><br>
 
-    <label for="password">Пароль:</label>
+    <label for="password">Password:</label>
     <input type="password" id="password" name="password" required><br>
 
     <label for="tg">Telegram:</label>
     <input type="text" id="tg" name="tg"><br>
 
-    <label for="videoCard">Видеокарта:</label>
+    <label for="videoCard">Video card:</label>
     <input type="text" id="videoCard" name="videoCard"><br>
 
-    <label for="numbersOfVideoCard">Количество видеокарт:</label>
+    <label for="numbersOfVideoCard">Number of video card:</label>
     <input type="number" id="numbersOfVideoCard" name="numbersOfVideoCard"><br>
 
-    <label for="hashRate">Хэшрейт:</label>
+    <label for="hashRate">Hash rate:</label>
     <input type="number" step="0.01" id="hashRate" name="hashRate"><br>
 
-    <label for="electricityCost">Стоимость электричества:</label>
+    <label for="electricityCost">Electricity cost:</label>
     <input type="number" step="0.01" id="electricityCost" name="electricityCost"><br>
 
-    <button type="submit">Создать пользователя</button>
+    <button type="submit">Create user</button>
 </form>
+
+<script>
+    function sendFormData() {
+        const form = document.getElementById("registrationForm");
+        const formData = new FormData(form);
+        const jsonData = {};
+
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+        });
+
+        fetch('/greeting/createUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jsonData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Обработка успешного ответа, если необходимо
+                console.log(data);
+                // Перенаправление на новую страницу
+                window.location.href = "/greeting/home";
+            })
+            .catch(error => {
+                // Обработка ошибки, если необходимо
+                console.error(error);
+            });
+    }
+</script>
+
 </body>
 </html>
