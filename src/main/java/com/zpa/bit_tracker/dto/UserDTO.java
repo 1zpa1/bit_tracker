@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class UserDTO {
     private Long id;
-    private String name;
+    private String username;
     private String email;
     private String tg;
     private String videoCard;
@@ -16,7 +16,7 @@ public class UserDTO {
 
     public static UserDTO toModel(User entity) {
         UserDTO model = new UserDTO();
-        model.setName(entity.getName());
+        model.setUsername(entity.getUsername());
         model.setEmail(entity.getEmail());
         model.setTg(entity.getTg());
         model.setVideoCard(entity.getVideoCard());
