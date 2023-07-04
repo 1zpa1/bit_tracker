@@ -2,6 +2,7 @@ package com.zpa.bit_tracker.entity;
 
 import lombok.Data;
 
+
 import javax.persistence.*;
 
 @Data
@@ -30,4 +31,8 @@ public class User {
     @Column(name = "electricity_cost")
     private double electricityCost;
 
+    /*public void setPassword(String password) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.password = passwordEncoder.encode(password);
+    }*/
 }
