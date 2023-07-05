@@ -6,6 +6,7 @@ import com.zpa.bit_tracker.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -27,5 +28,10 @@ public class UserController {
     @DeleteMapping("/deleteUserById/{id}")
     public Long delete(@PathVariable Long id) {
         return userService.delete(id);
+    }
+
+    @GetMapping("/showUserInfo")
+    public UserDTO showUserInfo(Principal principal) {
+        return userService.showUserInfo(principal);
     }
 }
