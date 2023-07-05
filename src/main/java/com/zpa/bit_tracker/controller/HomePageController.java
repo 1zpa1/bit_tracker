@@ -54,4 +54,15 @@ public class HomePageController {
                 .contentType(MediaType.TEXT_HTML)
                 .body(new String(fileContent, StandardCharsets.UTF_8));
     }
+
+    @GetMapping("/showUserInfoPage")
+    public ResponseEntity<String> showUserInfoPage() throws IOException {
+        ClassPathResource resource = new ClassPathResource("static/ShowUserInfoPage.html");
+        byte[] fileContent = new byte[(int) resource.getFile().length()];
+        resource.getInputStream().read(fileContent);
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.TEXT_HTML)
+                .body(new String(fileContent, StandardCharsets.UTF_8));
+    }
 }

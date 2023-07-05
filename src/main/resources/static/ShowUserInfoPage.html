@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show User Info</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>User Info</h1>
+<div id="user-info"></div>
+
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            type: "GET",
+            url: "/api/users/showUserInfo",
+            dataType: "json",
+            success: function(response) {
+                // Обработка успешного ответа
+                var userInfo = response;
+                var userInfoHtml = "<p>Username: " + userInfo.username + "</p>" +
+                    "<p>Email: " + userInfo.email + "</p>" +
+                    "<p>TG: " + userInfo.tg + "</p>" +
+                    "<p>Video Card: " + userInfo.videoCard + "</p>" +
+                    "<p>Number of Video Card: " + userInfo.numberOfVideoCard + "</p>" +
+                    "<p>Hash Rate: " + userInfo.hashRate + "</p>" +
+                    "<p>Electricity Cost: " + userInfo.electricityCost + "</p>";
+
+                $("#user-info").html(userInfoHtml);
+            },
+            error: function(xhr, status, error) {
+                // Обработка ошибки
+                console.log("Error: " + error);
+            }
+        });
+    });
+</script>
+</body>
+</html>

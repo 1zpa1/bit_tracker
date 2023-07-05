@@ -8,7 +8,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -40,4 +42,24 @@ public class UserService {
         userRepository.deleteById(id);
         return id;
     }
+
+    public UserDTO showUserInfo(Principal principal) {
+        String principalName = principal.getName();
+        Optional<User> userOptional = userRepository.findByUsername(principalName);
+        UserDTO userDTO = new UserDTO();
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            userDTO.setUsername(user.getUsername());
+            userDTO.setEmail(user.getEmail());
+            userDTO.setTg(user.getTg());
+            userDTO.setVideoCard(user.getVideoCard());
+            userDTO.setNumberOfVideoCard(user.getNumbersOfVideoCard());
+            userDTO.setHashRate(user.getHashRate());
+            userDTO.setElectricityCost(user.getElectricityCost());
+            userDTO.toModel(user);
+        }
+        return userDTO;
+    }
+
+
 }
