@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 
 @RestController
 @RequestMapping("/greeting")
-public class HomePageController {
+public class PageController {
 
     @Autowired
     private UserService userService;
